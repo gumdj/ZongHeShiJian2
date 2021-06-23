@@ -10,7 +10,7 @@
         <el-input label="" placeholder="请输入用户名" v-model="editForm.name"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input label="" placeholder="请输入密码" type="password" v-model="editForm.name"></el-input>
+        <el-input label="" placeholder="请输入密码" type="password" v-model="editForm.password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button  type="primary" @click="">登录</el-button>
