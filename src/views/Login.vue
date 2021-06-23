@@ -40,8 +40,10 @@ export default {
     }
   },
   beforeCreate(){
-    // 添加背景色
     document.querySelector('body').setAttribute('style', 'background-color:#3c3645')
+  },
+  beforeDestroy () {
+    document.querySelector('body').removeAttribute('style')
   },
   methods: {
 
