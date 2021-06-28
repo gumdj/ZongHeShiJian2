@@ -1,36 +1,39 @@
 <template>
   <div>
-    <el-form :model="editForm"
-             :rules="rules" ref="editForm"
-             class="demo-editForm login-container"
+    <el-form :model="loginForm"
+             :rules="rules" ref="loginForm"
+             class="demo-loginForm login-container"
              label-position="left"
              status-icon>
       <h3 class="title">系统登录</h3>
-      <el-form-item prop="name">
-        <el-input label="" placeholder="请输入用户名" v-model="editForm.name"></el-input>
+      <el-form-item prop="username">
+        <el-input label="" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input label="" placeholder="请输入密码" type="password" v-model="editForm.password"></el-input>
+        <el-input label="" placeholder="请输入密码" type="password" v-model="loginForm.password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button  type="primary" @click="">登录</el-button>
+        <el-button  type="primary" @click="submitLogin">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import {getRequest, postRequest} from "../axios";
+import router from "../router";
+
 export default {
   name: "Login",
   data() {
     return {
       //表单项及规则
-      editForm: {
-        userName: null,
-        password: null
+      loginForm: {
+        username: 'admin',
+        password: 'admin'
       },
       rules: {
-        name: [
+        username: [
           {required: true, message: '请输入用户名', trigger: 'blur'},
         ],
         password: [
@@ -46,13 +49,28 @@ export default {
     document.querySelector('body').removeAttribute('style')
   },
   methods: {
-
+    reSetForm() {
+      this.loginForm.password = null
+    },
+    submitLogin(formName) {
+      this.$refs.loginForm.validate((valid) => {
+        if (valid) {
+          postRequest('/user/login', this.loginForm).then(res => {
+            if (res) {
+              this.$store.commit('SET_TOKEN', res.obj.tokenHead + res.obj.token)
+              router.replace('/')
+            }
+          })
+        }
+        this.reSetForm()
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
-.demo-editForm {
+.demo-loginForm {
   -webkit-border-radius: 5px;
   border-radius: 5px;
   margin: 250px auto;
