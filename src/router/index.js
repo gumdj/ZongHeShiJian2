@@ -12,11 +12,11 @@ const routes = [
     name: 'Home',
     component: Home,
     children: [
-        {
-          path: '/index',
-          name: 'Index',
-          component: () => import('../views/Index')
-        }
+      {
+        path: '/index',
+        name: 'Index',
+        component: () => import('../views/Index')
+      }
     ]
   },
   {
@@ -27,6 +27,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  base: process.env.BASE_URL,
   routes
 })
 
@@ -45,6 +46,7 @@ router.beforeEach((to, from, next) => {
               let route = menuToRoute(e)
               if (route) {
                 newRoutes[0].children.push(route)
+                console.log(newRoutes[0])
               }
             })
           }

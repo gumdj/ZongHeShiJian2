@@ -21,7 +21,7 @@
       <router-link :to="item.path" v-for="item in menu.children">
         <el-menu-item :index="item.name">
           <template slot="title">
-            <i :class="item.icon"></i>
+            <i :class="item.icon" style="margin-right: 10px"></i>
             <span slot="title">{{item.title}}</span>
           </template>
         </el-menu-item>
@@ -47,6 +47,12 @@ export default {
 .el-menu-vertical-demo {
   height: 100vh;
   text-align: left;
+}
+.el-menu-item {
+  height: 60px !important;
+}
+.el-submenu__title {
+  height: 60px !important;
 }
 .router-link-active {
   text-decoration: none;

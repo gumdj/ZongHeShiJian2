@@ -8,64 +8,65 @@ let Result = {
     obj: null
 }
 
-Mock.mock('/user/nav', 'get', (a) => {
-    console.log(a)
+Mock.mock('/user/nav', 'get', () => {
     Result.obj = [
         {
-            title: '信息管理',
-            name: 'InfoManage',
+            title: '用户信息管理',
+            name: 'UserInfoManage',
             icon: 'el-icon-s-operation',
             component: '',
             path: '',
             children: [
                 {
-                    title: '商品信息',
-                    name: 'Goods',
-                    icon: 'el-icon-shopping-cart-1',
-                    component: 'sys/GoodsInformation',
-                    path: '/sys/goodsInformation',
-                    children: null
-                },
-                {
-                    title: '供应商信息',
-                    name: 'Supplier',
-                    icon: 'el-icon-s-custom',
-                    component: 'sys/Supplier',
-                    path: '/sys/supplier',
-                    children: null
-                },
-                {
-                    title: '商品品牌',
-                    name: 'Brand',
-                    icon: 'el-icon-postcard',
-                    component: 'sys/Brand',
-                    path: '/sys/brand',
-                    children: null
-                },
-                {
-                    title: '商品分类',
-                    name: 'GoodsType',
-                    icon: 'el-icon-menu',
-                    component: 'sys/GoodsType',
-                    path: '/sys/goodsType',
-                    children: []
-                },
-                {
-                    title: '商品规格',
-                    name: 'GoodsSpecification',
-                    icon: 'el-icon-notebook-2',
-                    component: 'sys/GoodsSpecification',
-                    path: '/sys/goodsSpecification',
-                    children: []
-                },
-                {
-                    title: '供应记录',
-                    name: 'Supply',
-                    icon: 'el-icon-coin',
-                    component: 'sys/Supply',
-                    path: '/sys/supply',
+                    title: '用户信息',
+                    name: 'UserInfo',
+                    icon: 'far fa-id-card',
+                    component: 'sys/UserInfo',
+                    path: '/sys/userInfo',
                     children: []
                 }
+            ]
+        },
+        {
+            title: '桥梁信息管理',
+            name: 'BridgeInfoManage',
+            icon: 'el-icon-setting',
+            component: '',
+            path: '',
+            children: [
+                {
+                    title: '桥梁资料卡',
+                    name: 'BridgeInfo',
+                    icon: 'fa fa-table',
+                    component: 'sys/BridgeInfo',
+                    path: '/sys/bridgeInfo',
+                    children: []
+                }
+            ]
+        },
+        {
+            title: '桥梁检测管理',
+            name: 'BridgeDetectionManage',
+            icon: 'el-icon-setting',
+            component: '',
+            path: '',
+            children: [
+                {
+                    title: '日常检测',
+                    name: 'BridgeDailyDetection',
+                    icon: 'el-icon-document',
+                    component: 'sys/BridgeDailyDetection',
+                    path: '/sys/bridgeDailyDetection',
+                    children: []
+                },
+                {
+                    title: '定期检测',
+                    name: 'BridgePeriodicDetection',
+                    icon: 'el-icon-document',
+                    component: 'sys/BridgeDailyDetection',
+                    path: '/sys/bridgePeriodicDetection',
+                    children: []
+                },
             ]
         }
     ]

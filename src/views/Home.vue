@@ -1,12 +1,12 @@
 <template>
   <div>
     <el-container>
-      <el-aside width="200px">
+      <el-aside width="201px">
         <SideMenu></SideMenu>
       </el-aside>
       <el-container>
         <el-header>
-          <strong>商店管理系统</strong>
+          <strong>桥梁养护信息管理平台</strong>
         </el-header>
         <el-main>
           <div style="margin: 0 10px;">
@@ -39,13 +39,11 @@ export default {
   text-align: center;
   line-height: 60px;
 }
-
 .el-aside {
   background-color: #D3DCE6;
   color: #333;
   line-height: 200px;
 }
-
 .el-main {
   color: #333;
   line-height: 160px;
