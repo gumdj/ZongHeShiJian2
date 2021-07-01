@@ -16,7 +16,15 @@ const routes = [
         path: '/index',
         name: 'Index',
         component: () => import('../views/Index')
-      }
+      },
+      {
+        path: '/userCenter',
+        name: 'UserCenter',
+        meta: {
+          title: "个人中心"
+        },
+        component: () => import('../views/UserCenter.vue')
+      },
     ]
   },
   {
@@ -46,7 +54,6 @@ router.beforeEach((to, from, next) => {
               let route = menuToRoute(e)
               if (route) {
                 newRoutes[0].children.push(route)
-                console.log(newRoutes[0])
               }
             })
           }

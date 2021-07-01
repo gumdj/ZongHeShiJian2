@@ -11,7 +11,7 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(response => {
     if (response.status && response.status === 200) {
-        if (response.data.code === 500) {
+        if (response.data.code === 500 && response.data.code === 401 && response.data.code === 403) {
             Message.error({message: response.data.msg});
             return;
         }
@@ -33,7 +33,7 @@ export const getRequest = (url, params) => {
     return axios( {
         method: 'get',
         url: `${url}`,
-        data: params,
+        params: params,
     } )
 }
 

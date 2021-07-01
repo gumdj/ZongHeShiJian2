@@ -1,14 +1,12 @@
 <template>
   <div>
+    hello
   </div>
 </template>
 
 <script>
 export default {
-  name: "Index",
-  data() {
-    return {}
-  },
+  name: "UserCenter"
 }
 </script>
 

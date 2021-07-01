@@ -58,6 +58,7 @@ export default {
           postRequest('/user/login', this.loginForm).then(res => {
             if (res) {
               this.$store.commit('SET_TOKEN', res.obj.tokenHead + res.obj.token)
+              this.$store.commit('SET_USERNAME', this.loginForm.username)
               router.replace('/')
             }
           })
@@ -70,6 +71,11 @@ export default {
 </script>
 
 <style scoped>
+div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .demo-loginForm {
   -webkit-border-radius: 5px;
   border-radius: 5px;
