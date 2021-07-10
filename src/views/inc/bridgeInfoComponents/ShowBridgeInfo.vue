@@ -12,6 +12,7 @@
     </el-form>
     <el-table
         :data="tableData"
+        v-loading="loading"
         style="width: 100%"
         stripe>
       <el-table-column type="expand">
@@ -160,6 +161,8 @@ export default {
       size: 10,
       current: 1,
 
+      loading: true,
+
       searchName: '',
 
       tableData: [],
@@ -184,6 +187,7 @@ export default {
       this.getBridgeInfos()
     },
     getBridgeInfos() {
+      this.loading = true
       getRequest('/bridge-info/all-info', {
         current: this.current,
         size: this.size,
@@ -193,6 +197,7 @@ export default {
         this.size = res.size
         this.current = res.current
         this.total = res.total
+        this.loading = false
       })
     },
     handleSizeChange(val) {

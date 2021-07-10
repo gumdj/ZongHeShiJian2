@@ -104,7 +104,7 @@
           <el-row>
             <el-col align="center" :span="12">
               <el-form-item label="是否完好" prop="isCompletion">
-                <el-radio-group style="margin-right: 220px" v-model="editForm.isCompletion">
+                <el-radio-group v-model="editForm.isCompletion">
                   <el-radio label="是"></el-radio>
                   <el-radio label="否"></el-radio>
                 </el-radio-group>
@@ -186,7 +186,8 @@ export default {
       routineDetectionResults: [],
 
       active: 0,
-      loading: true,
+
+      loading: false
     }
   },
   created() {
@@ -195,10 +196,8 @@ export default {
   },
   methods: {
     getBridgeItem() {
-      this.loading = true
       getRequest('/bridge-info/bridge-name-id-map').then(res => {
         this.bridgeItemList = res
-        this.loading = false
       })
     },
     getRoutineDetectionItem() {
@@ -207,8 +206,10 @@ export default {
       })
     },
     getRoutineDetectionHistoryById() {
+      this.loading = true
       getRequest('/routine-detection/history/' + this.displayBridgeId).then(res => {
         this.tableData = res
+        this.loading = false
       })
     },
     handleBridgeIdSelectorValueChange(val) {

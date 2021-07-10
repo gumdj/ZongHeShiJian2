@@ -7,6 +7,7 @@
         @click="dialogFormVisible = true">添加用户</el-button>
     <el-table
         :data="tableData"
+        v-loading="loading"
         stripe>
       <el-table-column
           prop="userId"
@@ -222,7 +223,9 @@ export default {
         ],
       },
 
-      tableData: []
+      tableData: [],
+
+      loading: true
     }
   },
   created() {
@@ -295,11 +298,13 @@ export default {
       })
     },
     getUserInfos() {
+      this.loading = true
       getRequest('/user/all-info/' + this.current + '/' + this.size).then(res => {
         this.tableData = res.records
         this.size = res.size
         this.current = res.current
         this.total = res.total
+        this.loading = false
       })
     },
     handleSizeChange(val) {
