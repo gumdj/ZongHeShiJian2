@@ -108,7 +108,7 @@
               <el-input-number :min="1" style="width: 100%" placeholder="请输入桥梁跨数" size="small" v-model="editForm.spanNum"></el-input-number>
             </el-form-item>
             <el-form-item label="桥梁结构类型" prop="structureId">
-              <el-select placeholder="请选择桥梁结构等级" style="width: 100%;" size="small" v-model="editForm.structureId">
+              <el-select placeholder="请选择桥梁结构类型" style="width: 100%;" size="small" v-model="editForm.structureId">
                 <el-option :label="item.typeName" :value="item.structureId" v-for="(item, index) in itemList" :key="index"></el-option>
               </el-select>
             </el-form-item>

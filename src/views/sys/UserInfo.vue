@@ -249,12 +249,14 @@ export default {
             "username": this.editForm.username
           }).then(res => {
             this.dialogFormVisible = false;
-            this.getUserInfos()
-            this.$notify({
-              title: '成功',
-              message: '添加成功',
-              type: 'success'
-            })
+            if (res) {
+              this.getUserInfos()
+              this.$notify({
+                title: '成功',
+                message: '添加成功',
+                type: 'success'
+              })
+            }
           })
           this.resetForm('editForm')
         } else {

@@ -266,11 +266,13 @@ export default {
             },
             routineDetectionResults: this.routineDetectionResults
           }).then(res => {
-            this.$notify({
-              title: '成功',
-              message: '添加成功',
-              type: 'success'
-            })
+            if (res) {
+              this.$notify({
+                title: '成功',
+                message: '添加成功',
+                type: 'success'
+              })
+            }
             this.dialogVisible = false
             this.getRoutineDetectionHistoryById()
             this.resetForm()
