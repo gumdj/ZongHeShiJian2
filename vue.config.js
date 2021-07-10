@@ -5,11 +5,8 @@ module.exports = {
         proxy: {
             '/': {
                 ws: false,
-
-                target: 'http://localhost:8080',
-
+                target: 'http://10.81.229.156:8080',
                 changeOrigin: true,
-
                 pathReWrite: {
                     '^/': '/'
                 },

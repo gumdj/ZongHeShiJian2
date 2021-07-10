@@ -60,7 +60,7 @@
             <el-form-item label="限载标准" prop="loadingLimit">
               <el-input placeholder="请输入限载标准" size="small" v-model="editForm.loadingLimit"></el-input>
             </el-form-item>
-            <el-form-item label="设计荷载" prop="load">
+            <el-form-item label="设计荷载(吨)" prop="load">
               <el-input placeholder="请输入设计荷载" size="small" v-model="editForm.load"></el-input>
             </el-form-item>
             <el-form-item label="养护类别" prop="maintenanceType">
@@ -112,7 +112,7 @@
                 <el-option :label="item.typeName" :value="item.structureId" v-for="(item, index) in itemList" :key="index"></el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="抗震烈度" prop="antiknock">
+            <el-form-item label="抗震烈度(度)" prop="antiknock">
               <el-input placeholder="请输入抗震烈度" size="small" v-model="editForm.antiknock"></el-input>
             </el-form-item>
             <el-form-item label="桥面面积(平方米)" prop="area">
@@ -136,7 +136,7 @@
 </template>
 
 <script>
-import BridgeInfoCard from "./bridgeInfoCard/BridgeInfoCard";
+import BridgeInfoCard from "./bridgeCard/BridgeInfoCard";
 import {getRequest, postRequest, putRequest} from "../../../axios";
 export default {
   name: "AddBridgeInfo",

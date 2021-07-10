@@ -12,6 +12,7 @@
           prop="userId"
           align="center"
           width="180px"
+          sortable
           label="用户编号">
       </el-table-column>
       <el-table-column
@@ -257,7 +258,7 @@ export default {
           this.$notify.error({
             title: '错误',
             message: '请检查输入项'
-          });
+          })
         }
       });
     },
@@ -286,6 +287,11 @@ export default {
         'type': val
       }).then(res => {
         this.getUserInfos()
+        this.$notify({
+          title: '成功',
+          message: '修改权限成功',
+          type: 'success'
+        })
       })
     },
     getUserInfos() {

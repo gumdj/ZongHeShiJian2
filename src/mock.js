@@ -63,7 +63,7 @@ Mock.mock('/user/nav', 'get', () => {
                     title: '定期检测',
                     name: 'BridgePeriodicDetection',
                     icon: 'el-icon-document',
-                    component: 'sys/BridgeDailyDetection',
+                    component: 'sys/BridgePeriodicDetection',
                     path: '/sys/bridgePeriodicDetection',
                     children: []
                 },

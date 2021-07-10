@@ -7,7 +7,7 @@
             v-model="searchName"
             @change="handleSearchFormChange"
             :trigger-on-focus="false"
-            placeholder="桥梁名称"></el-input>
+            placeholder="🔍桥梁名称"></el-input>
       </el-form-item>
     </el-form>
     <el-table
@@ -88,6 +88,7 @@
       <el-table-column
           label="编号"
           align="center"
+          sortable
           prop="bridgeId">
       </el-table-column>
       <el-table-column

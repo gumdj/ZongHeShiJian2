@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <el-container>
       <el-aside width="201px">
         <SideMenu></SideMenu>
@@ -77,7 +77,7 @@
             <span class="key">权限: </span>
             <span class="value"
                   v-if="userInfo.type === 0"
-                  style="border-radius: 4px;background-color: mediumblue;color: #FFFFFF;font-weight: bold">&nbsp;管理员&nbsp;
+                  style="border-radius: 4px;background-color: mediumblue;color: #FFFFFF;font-weight: bold">&nbsp;系统管理员&nbsp;
             </span>
             <span class="value"
                   v-if="userInfo.type === 1"
@@ -166,6 +166,10 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
 .value {
   margin-left: 10px;
 }

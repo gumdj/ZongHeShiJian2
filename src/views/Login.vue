@@ -5,15 +5,15 @@
              class="demo-loginForm login-container"
              label-position="left"
              status-icon>
-      <h3 class="title">系统登录</h3>
+      <h2 class="title">Login</h2>
       <el-form-item prop="username">
-        <el-input label="" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
+        <el-input class="input-box" clearable label="" placeholder="请输入用户名" v-model="loginForm.username"></el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input label="" placeholder="请输入密码" type="password" v-model="loginForm.password"></el-input>
+        <el-input class="input-box" clearable label="" placeholder="请输入密码" type="password" v-model="loginForm.password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button  type="primary" @click="submitLogin">登录</el-button>
+        <el-button class="login-button"  type="primary" @click="submitLogin">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -29,8 +29,8 @@ export default {
     return {
       //表单项及规则
       loginForm: {
-        username: 'admin',
-        password: 'admin'
+        username: '',
+        password: ''
       },
       rules: {
         username: [
@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     reSetForm() {
-      this.loginForm.password = null
+      this.loginForm.password = ''
     },
     submitLogin(formName) {
       this.$refs.loginForm.validate((valid) => {
@@ -59,7 +59,7 @@ export default {
             if (res) {
               this.$store.commit('SET_TOKEN', res.obj.tokenHead + res.obj.token)
               this.$store.commit('SET_USERNAME', this.loginForm.username)
-              router.replace('/')
+              router.replace('/index')
             }
           })
         }
@@ -76,12 +76,30 @@ div {
   justify-content: center;
   align-items: center;
 }
+.input-box {
+  width: 250px;
+}
+.title {
+  font-family: "Source Code Pro";
+  font-size: 35px;
+}
+.login-button {
+  width: 120px;
+}
 .demo-loginForm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   -webkit-border-radius: 5px;
+  flex-direction: column;
   border-radius: 5px;
-  margin: 250px auto;
-  width: 350px;
-  padding: 35px 35px 15px;
+  width: 420px;
+  height: 300px;
+  padding: 0;
   background: #fff;
   border: 1px solid #eaeaea;
   box-shadow: 0 0 25px #cac6c6;
