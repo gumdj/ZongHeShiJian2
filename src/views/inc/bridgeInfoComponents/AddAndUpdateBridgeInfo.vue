@@ -299,15 +299,19 @@ export default {
         if (valid) {
           if (this.editForm.bridgeId === null) {
             postRequest('/bridge-info', this.editForm).then(res => {
-              this.$notify({
-                title: '成功',
-                message: '添加成功',
-                type: 'success'
-              })
+              if (res) {
+                this.$notify({
+                  title: '成功',
+                  message: '添加成功',
+                  type: 'success'
+                })
+              }
               this.resetForm('editForm')
             })
           } else {
+            putRequest('').then(res => {
 
+            })
           }
         } else {
           this.$notify.error({

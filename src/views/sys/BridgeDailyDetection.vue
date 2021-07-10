@@ -213,7 +213,7 @@ export default {
       })
     },
     handleBridgeIdSelectorValueChange(val) {
-      this.getRoutineDetectionHistoryById(val)
+      this.getRoutineDetectionHistoryById()
     },
     handleCheckRemark(remark, date, detectionItem) {
       let displayMessage =

@@ -291,12 +291,14 @@ export default {
         'userId': this.changeUserId,
         'type': val
       }).then(res => {
-        this.getUserInfos()
-        this.$notify({
-          title: '成功',
-          message: '修改权限成功',
-          type: 'success'
-        })
+        if (res) {
+          this.getUserInfos()
+          this.$notify({
+            title: '成功',
+            message: '修改权限成功',
+            type: 'success'
+          })
+        }
       })
     },
     getUserInfos() {

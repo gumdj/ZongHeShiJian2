@@ -134,7 +134,10 @@
         <template slot-scope="scope">
           <el-button :disabled="currentType > 1" type="text" @click="handleUpdate(scope.row.bridgeId)">修改</el-button>
           <el-divider direction="vertical"></el-divider>
-          <el-button :disabled="currentType > 1" type="text" @click="">弃用</el-button>
+          <el-button
+              :disabled="currentType > 1"
+              type="text"
+              @click="handleDelete(scope.row.bridgeId)">{{ scope.row.deleted ? '恢复' : '弃用' }}</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -151,7 +154,7 @@
 </template>
 
 <script>
-import {getRequest} from "../../../axios";
+import {deleteRequest, getRequest} from "../../../axios";
 
 export default {
   name: "ShowBridgeInfo",
@@ -207,6 +210,18 @@ export default {
     handleCurrentChange(val) {
       this.current = val
       this.getUserInfos()
+    },
+    handleDelete(bridgeId) {
+      deleteRequest('/bridge-info/' + bridgeId).then(res => {
+        if (res) {
+          this.getBridgeInfos()
+          this.$notify({
+            title: '成功',
+            message: '修改成功',
+            type: 'success'
+          })
+        }
+      })
     }
   }
 }
