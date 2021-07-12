@@ -118,6 +118,7 @@
 
 import SideMenu from "./inc/SideMenu";
 import {getRequest, postRequest} from "../axios";
+import store from "../store";
 export default {
   name: 'Home',
   data() {

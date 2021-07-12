@@ -13,12 +13,12 @@
         </template>
       </el-menu-item>
     </router-link>
-    <el-submenu :index="menu.name" v-for="menu in menuList">
+    <el-submenu :index="menu.name" v-for="(menu, index) in menuList" :key="index">
       <template slot="title">
         <i :class="menu.icon"></i>
         <span>{{menu.title}}</span>
       </template>
-      <router-link :to="item.path" v-for="item in menu.children">
+      <router-link :to="item.path" v-for="(item, index) in menu.children" :key="index">
         <el-menu-item :index="item.name">
           <template slot="title">
             <i :class="item.icon" style="margin-right: 10px"></i>
@@ -36,10 +36,14 @@ export default {
   computed: {
     menuList: {
       get() {
+        if (this.$store.state.menus.menuList === undefined) {
+          location.reload()
+        }
         return this.$store.state.menus.menuList
       }
     }
-  }
+  },
+  methods: {}
 }
 </script>
 

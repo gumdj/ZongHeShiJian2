@@ -33,30 +33,50 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.name === 'Login' || localStorage.getItem('token')) {
-    //动态获取路由
-    let hasRoutes = store.state.menus.hasRoutes
-    if (hasRoutes === false) {
-      getRequest('/user/nav').then(res => {
-        //获取menuList
-        store.commit('setMenuList', res.obj)
-        let newRoutes = router.options.routes
-        res.obj.forEach(menu => {
-          if (menu.children) {
-            menu.children.forEach(e => {
-              let route = menuToRoute(e)
-              if (route) {
-                newRoutes[0].children.push(route)
-              }
-            })
-          }
+    if (localStorage.getItem('token') !== null) {
+      //动态获取路由
+      let hasRoutes = store.state.menus.hasRoutes
+      if (hasRoutes === false) {
+        getRequest('/user/router').then(res => {
+          //获取menuList
+          store.commit('setMenuList', res)
+          let newRoutes = router.options.routes
+          res.forEach(menu => {
+            if (menu.children) {
+              menu.children.forEach(e => {
+                let route = menuToRoute(e)
+                if (route) {
+                  newRoutes[0].children.push(route)
+                }
+              })
+            }
+          })
+          router.matcher = new VueRouter({mode: 'history'}).matcher;
+          router.options.routes = [
+            {
+              path: '/',
+              name: 'Home',
+              component: Home,
+              children: [
+                {
+                  path: '/index',
+                  name: 'Index',
+                  component: () => import('../views/Index')
+                }
+              ]
+            },
+            {
+              path: '/login',
+              name: 'Login',
+              component: () => import('../views/Login')
+            }
+          ]
+          newRoutes.forEach((i) => {
+            router.addRoute(i)
+          })
         })
-        router.matcher = new VueRouter({mode: 'history'}).matcher;
-        newRoutes.forEach((i) => {
-          router.addRoute(i)
-        })
-      })
-      hasRoutes = true
-      store.commit('changeRouteStatus', hasRoutes)
+        store.commit('changeRouteStatus', true)
+      }
     }
     next()
   } else {

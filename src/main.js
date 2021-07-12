@@ -8,6 +8,8 @@ import solid from '@fortawesome/fontawesome-free-solid'
 import regular from '@fortawesome/fontawesome-free-regular'
 import brands from '@fortawesome/fontawesome-free-brands'
 
+import VCharts from 'v-charts-v2'
+
 import './assets/icon/iconfont.css'
 
 import Element from "element-ui"
@@ -27,6 +29,7 @@ Vue.prototype.deleteRequest = deleteRequest
 Vue.prototype.putRequest = putRequest
 Vue.config.productionTip = false
 Vue.use(Element)
+Vue.use(VCharts)
 
 new Vue({
   router,

@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="background">
+      <img :src="imgSrc" width="100%" height="100%" alt="">
+    </div>
     <el-form :model="loginForm"
              :rules="rules" ref="loginForm"
              class="demo-loginForm login-container"
@@ -27,6 +30,8 @@ export default {
   name: "Login",
   data() {
     return {
+      imgSrc: require('../assets/loginBackgroundImage/wallhaven-4od535_1920x1080.png'),
+
       //表单项及规则
       loginForm: {
         username: '',
@@ -71,6 +76,14 @@ export default {
 </script>
 
 <style scoped>
+.background {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: absolute;
+}
 div {
   display: flex;
   justify-content: center;

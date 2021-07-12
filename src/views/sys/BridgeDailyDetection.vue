@@ -89,7 +89,7 @@
     <el-dialog
         :visible.sync="dialogVisible"
         :before-close="handleClose">
-    <DailyDetectionCard style="height: 500px;">
+    <DailyDetectionCard style="height: 500px;margin-left: -5px;">
       <div class="dividing-border-1">
         <el-steps :active="active" align-center>
           <el-step
@@ -104,7 +104,7 @@
           <el-row>
             <el-col align="center" :span="12">
               <el-form-item label="是否完好" prop="isCompletion">
-                <el-radio-group v-model="editForm.isCompletion">
+                <el-radio-group  v-model="editForm.isCompletion">
                   <el-radio label="是"></el-radio>
                   <el-radio label="否"></el-radio>
                 </el-radio-group>
@@ -186,8 +186,7 @@ export default {
       routineDetectionResults: [],
 
       active: 0,
-
-      loading: false
+      loading: true,
     }
   },
   created() {
@@ -196,8 +195,10 @@ export default {
   },
   methods: {
     getBridgeItem() {
+      this.loading = true
       getRequest('/bridge-info/bridge-name-id-map').then(res => {
         this.bridgeItemList = res
+        this.loading = false
       })
     },
     getRoutineDetectionItem() {
@@ -206,10 +207,8 @@ export default {
       })
     },
     getRoutineDetectionHistoryById() {
-      this.loading = true
       getRequest('/routine-detection/history/' + this.displayBridgeId).then(res => {
         this.tableData = res
-        this.loading = false
       })
     },
     handleBridgeIdSelectorValueChange(val) {
@@ -357,12 +356,12 @@ export default {
 }
 .next-btn {
   position: relative;
-  right: -280px;
+  right: -70%;
   bottom: -100px;
 }
 .prev-btn {
   position: relative;
-  right: -80px;
+  right: -20%;
   bottom: -100px;
 }
 </style>

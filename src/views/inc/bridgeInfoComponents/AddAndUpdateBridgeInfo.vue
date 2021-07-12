@@ -309,8 +309,14 @@ export default {
               this.resetForm('editForm')
             })
           } else {
-            putRequest('').then(res => {
-
+            putRequest('/bridge-info/update', this.editForm).then(res => {
+              if (res) {
+                this.$notify({
+                  title: '成功',
+                  message: '修改还就那个成功',
+                  type: 'success'
+                })
+              }
             })
           }
         } else {
